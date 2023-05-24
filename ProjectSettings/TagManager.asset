@@ -7,6 +7,9 @@ TagManager:
   - Left Hand
   - Right Hand
   - Interactable
+  - TopShell
+  - BotShell
+  - ShotgunShell
   layers:
   - Default
   - TransparentFX

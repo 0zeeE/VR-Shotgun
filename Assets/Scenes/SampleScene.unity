@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 492779902}
   m_Layer: 8
   m_Name: Shell_2.002 eject (4)
-  m_TagString: Untagged
+  m_TagString: ShotgunShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1110,7 +1110,7 @@ GameObject:
   - component: {fileID: 567051066}
   m_Layer: 8
   m_Name: Shell_2.002 eject (1)
-  m_TagString: Untagged
+  m_TagString: ShotgunShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2101,7 +2101,7 @@ GameObject:
   - component: {fileID: 871803781}
   m_Layer: 8
   m_Name: Shell_2.002 eject
-  m_TagString: Untagged
+  m_TagString: ShotgunShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,7 +3122,7 @@ GameObject:
   - component: {fileID: 1579459014}
   m_Layer: 0
   m_Name: shotgun shells
-  m_TagString: Untagged
+  m_TagString: TopShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3261,7 +3261,7 @@ GameObject:
   - component: {fileID: 1701509392}
   m_Layer: 8
   m_Name: Shell_2.002 eject (2)
-  m_TagString: Untagged
+  m_TagString: ShotgunShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3511,7 +3511,7 @@ GameObject:
   - component: {fileID: 1842190876}
   m_Layer: 8
   m_Name: Shell_2.002 eject (3)
-  m_TagString: Untagged
+  m_TagString: ShotgunShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6287,9 +6287,10 @@ GameObject:
   - component: {fileID: 5071516988983603579}
   - component: {fileID: 7956009738781406991}
   - component: {fileID: 7956009738781406990}
+  - component: {fileID: 7956009738781406992}
   m_Layer: 8
   m_Name: InsideLoadBot
-  m_TagString: Untagged
+  m_TagString: BotShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6885,9 +6886,10 @@ GameObject:
   - component: {fileID: 1196581449885584063}
   - component: {fileID: 7949846698440044452}
   - component: {fileID: 7949846698440044453}
+  - component: {fileID: 7949846698440044454}
   m_Layer: 8
   m_Name: InsideLoadTop
-  m_TagString: Untagged
+  m_TagString: TopShell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7043,6 +7045,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0017215348, y: 0.0006887003, z: 0.0006887004}
   m_Center: {x: -0.00082803017, y: 2.7761874e-11, z: -1.2396448e-10}
+--- !u!114 &7949846698440044454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709630525897360597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e8780a9f504fd488f3df37e5373955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotgunTop: {fileID: 3132747494237892372}
 --- !u!33 &7956009738781406989
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7119,6 +7134,19 @@ MonoBehaviour:
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
+--- !u!114 &7956009738781406992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291905394342131379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969ef3c4b9494f440a4e3a6e8caefa58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotgunBot: {fileID: 3132747494237892372}
 --- !u!4 &8109411802542615045
 Transform:
   m_ObjectHideFlags: 0
@@ -7451,6 +7479,8 @@ MonoBehaviour:
   bullet: {fileID: 6862885863254093909, guid: 246a75805a7708544aacf11d4271ea00, type: 3}
   spawnPoint: {fileID: 1517867742}
   speed: 50
+  isTopLoaded: 0
+  isBotLoaded: 0
 --- !u!1 &8748306096556810088
 GameObject:
   m_ObjectHideFlags: 0
