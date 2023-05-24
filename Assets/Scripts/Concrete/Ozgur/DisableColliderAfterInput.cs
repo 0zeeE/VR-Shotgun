@@ -19,7 +19,7 @@ public class DisableColliderAfterInput : MonoBehaviour
     void Update()
     {
         float triggerValue = gripAnimationAction.action.ReadValue<float>();
-        Debug.Log(triggerValue);
+        //Debug.Log(triggerValue);
         if(triggerValue >= 0.5f)
         {
             boxcollide.SetActive(false);

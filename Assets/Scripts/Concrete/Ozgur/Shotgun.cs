@@ -8,20 +8,37 @@ public class Shotgun : MonoBehaviour
     public Transform spawnPoint;
     public float speed = 20f;
  
-     public bool isTopLoaded = false;
-     public bool isBotLoaded = false;
-    // Start is called before the first frame update
+    public bool isTopLoaded = false;
+    public bool isBotLoaded = false;
+    [SerializeField] private HingeJoint shotgunHinge;
+    [SerializeField] private GameObject topSocket;
+    [SerializeField] private GameObject botSocket;
+    [SerializeField] private GameObject shotgunShell1;
+    [SerializeField] private GameObject shotgunShell2;
+
+
+
+
     void Start()
     {
+        
         XRGrabInteractable grabable = GetComponent<XRGrabInteractable>();
         grabable.activated.AddListener(FireBullet);
+        
+
+        
+        
        
     }
 
     // Update is called once per frame
     void Update()
     {
+     
+        
 
+
+        EjectEmptyShells();
     }
 
     public void FireBullet(ActivateEventArgs arg)
@@ -46,6 +63,29 @@ public class Shotgun : MonoBehaviour
         
     }
 
+
+    private void EjectEmptyShells()
+    {
+
+        if ((shotgunHinge.angle < 30f && shotgunHinge.angle > 15f ) && isTopLoaded == false)
+        {
+            Debug.Log("Ready to eject magazine");
+            topSocket.SetActive(false);
+            
+        }
+        if ((shotgunHinge.angle < 30f && shotgunHinge.angle > 15f) && isBotLoaded == false)
+        {
+            Debug.Log("Ready to eject magazine");
+            botSocket.SetActive(false);
+            
+        }
+        else
+        {
+            Debug.Log("Not ready for eject");
+            topSocket.SetActive(true);
+            botSocket.SetActive(true);
+        }
+    }
     
 
     
