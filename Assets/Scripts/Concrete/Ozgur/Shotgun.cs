@@ -13,8 +13,9 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private HingeJoint shotgunHinge;
     [SerializeField] private GameObject topSocket;
     [SerializeField] private GameObject botSocket;
-    [SerializeField] private GameObject shotgunShell1;
-    [SerializeField] private GameObject shotgunShell2;
+    [SerializeField] private GameObject shotgunShellTop;
+    [SerializeField] private GameObject shotgunShellBot;
+    
 
 
 
@@ -34,11 +35,27 @@ public class Shotgun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+
+
+
+        FindLoadedShells();
+        EjectEmptyShells();
+    }
+
+
+    private void FindLoadedShells()
+    {
+        if(shotgunShellTop == null)
+        {
+            shotgunShellTop = GameObject.FindGameObjectWithTag("LoadedTopShell");
+        }
+        if(shotgunShellBot == null)
+        {
+            shotgunShellBot = GameObject.FindGameObjectWithTag("LoadedBotShell");
+        }
+        
         
 
-
-        EjectEmptyShells();
     }
 
     public void FireBullet(ActivateEventArgs arg)
@@ -50,6 +67,8 @@ public class Shotgun : MonoBehaviour
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
             Destroy(spawnedBullet, 5);
             isTopLoaded = false;
+            
+            
         }
         else if(isTopLoaded ==false && isBotLoaded == true)
         {
@@ -58,6 +77,8 @@ public class Shotgun : MonoBehaviour
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
             Destroy(spawnedBullet, 5);
             isBotLoaded = false;
+            
+
 
         }
         
@@ -66,26 +87,37 @@ public class Shotgun : MonoBehaviour
 
     private void EjectEmptyShells()
     {
+        //if ((shotgunHinge.angle > 35f) && isTopLoaded == false && shotgunShellTop.tag =="LoadedTopShell")
 
-        if ((shotgunHinge.angle < 30f && shotgunHinge.angle > 15f ) && isTopLoaded == false)
+        if ((shotgunHinge.angle > 35f) && isTopLoaded == false && shotgunShellTop != null)
         {
             Debug.Log("Ready to eject magazine");
             topSocket.SetActive(false);
+            shotgunShellTop.GetComponent<Rigidbody>().AddForce(new Vector3(0, 45f, 0) * 15f * Time.deltaTime);
+            Destroy(shotgunShellTop, 2f);
             
         }
-        if ((shotgunHinge.angle < 30f && shotgunHinge.angle > 15f) && isBotLoaded == false)
+        if ((shotgunHinge.angle > 35f ) && isBotLoaded == false && shotgunShellBot != null)
         {
             Debug.Log("Ready to eject magazine");
             botSocket.SetActive(false);
-            
+            shotgunShellBot.GetComponent<Rigidbody>().AddForce(new Vector3(45f, 45f, 0) * 15f * Time.deltaTime);
+            Destroy(shotgunShellBot, 2f);
         }
         else
         {
+           
             Debug.Log("Not ready for eject");
             topSocket.SetActive(true);
             botSocket.SetActive(true);
+            
+
+            
+
         }
     }
+
+    
     
 
     
