@@ -15,7 +15,8 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private GameObject botSocket;
     [SerializeField] private GameObject shotgunShellTop;
     [SerializeField] private GameObject shotgunShellBot;
-    
+    [SerializeField] private AudioSource shootSound;
+    [SerializeField] private ParticleSystem muzzleFlash;
 
 
 
@@ -62,6 +63,8 @@ public class Shotgun : MonoBehaviour
     {
         if(isTopLoaded)
         {
+            shootSound.Play();
+            muzzleFlash.Play();
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
@@ -72,6 +75,8 @@ public class Shotgun : MonoBehaviour
         }
         else if(isTopLoaded ==false && isBotLoaded == true)
         {
+            shootSound.Play();
+            muzzleFlash.Play();
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
