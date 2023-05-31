@@ -16,6 +16,8 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private GameObject shotgunShellTop;
     [SerializeField] private GameObject shotgunShellBot;
     [SerializeField] private AudioSource shootSound;
+    [SerializeField] private AudioSource openSound;
+    [SerializeField] private AudioSource closeSound;
     [SerializeField] private ParticleSystem muzzleFlash;
 
 
@@ -41,6 +43,7 @@ public class Shotgun : MonoBehaviour
 
         FindLoadedShells();
         EjectEmptyShells();
+        OpenAndClose();
     }
 
 
@@ -120,6 +123,21 @@ public class Shotgun : MonoBehaviour
             
 
         }
+    }
+
+    private void OpenAndClose()
+    {
+        if(shotgunHinge.angle >0f && shotgunHinge.angle < 8f)
+        {
+            closeSound.Play();
+        }
+        
+        if(shotgunHinge.angle > 15f && shotgunHinge.angle < 20f)
+        {
+            openSound.Play();
+            
+        }
+        
     }
 
     
