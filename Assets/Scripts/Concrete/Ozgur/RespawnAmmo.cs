@@ -12,12 +12,6 @@ public class RespawnAmmo : MonoBehaviour
         ammoTransform = this.gameObject.transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SpawnAmmo()
     {
         GameObject shotgunShells = Instantiate(ammo, ammoTransform);

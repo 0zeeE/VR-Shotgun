@@ -6,7 +6,7 @@ public class Shotgun : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
-    public float speed = 20f;
+    public float speed = 30f;
  
     public bool isTopLoaded = false;
     public bool isBotLoaded = false;

@@ -13,6 +13,7 @@ TagManager:
   - LoadedTopShell
   - LoadedBotShell
   - EmptyShell
+  - Button
   layers:
   - Default
   - TransparentFX
