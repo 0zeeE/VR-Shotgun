@@ -19,6 +19,7 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private AudioSource openSound;
     [SerializeField] private AudioSource closeSound;
     [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private GameObject shootingParticles;
 
 
 
@@ -67,7 +68,9 @@ public class Shotgun : MonoBehaviour
         if(isTopLoaded)
         {
             shootSound.Play();
-            muzzleFlash.Play();
+            //muzzleFlash.Play();
+            GameObject spawnedParticles = Instantiate(shootingParticles, spawnPoint.position, spawnPoint.rotation);
+            Destroy(spawnedParticles, 2);
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
@@ -79,7 +82,9 @@ public class Shotgun : MonoBehaviour
         else if(isTopLoaded ==false && isBotLoaded == true)
         {
             shootSound.Play();
-            muzzleFlash.Play();
+            //muzzleFlash.Play();
+            GameObject spawnedParticles = Instantiate(shootingParticles, spawnPoint.position, spawnPoint.rotation);
+            Destroy(spawnedParticles, 2);
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * speed;
